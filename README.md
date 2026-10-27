@@ -1,4 +1,4 @@
-# Nivesh
+# nesee
 
 A working Indian stock discovery website powered by a real ridge-regression forecasting model. Built with React, Vinext, Tailwind, and Cloudflare Workers. No brokerage integration or order execution.
 
@@ -57,3 +57,21 @@ Yahoo adjusted prices account for distributions and splits; model returns are an
 BSE-only shares, SME and non-EQ securities are excluded. Sector labels are curated for selected companies; others display “Other sectors.” No model is shown when there is insufficient history. Data-source availability and terms must be evaluated before commercial use.
 
 Sources: [NSE official reports](https://www.nseindia.com/all-reports), [NSE equity master](https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv), [Yahoo historical data](https://finance.yahoo.com/), [SEBI investor education](https://investor.sebi.gov.in/).
+
+## Budget allocation planner
+
+The home-page summary dashboard has been replaced by **Get started → How much can you invest? → Build my plans**. The input is a total investment budget, independent of the share-price filter in the stock browser. The nesee brand replaces Nivesh; existing watchlist entries are read from the old local-storage key for continuity.
+
+`POST /api/allocate` accepts JSON `{ "amount": 1000, "chargesAllowance": 0 }`. Amounts are validated between ₹1 and ₹1,00,000, with paise precision. An optional flat charges allowance must be smaller than the budget.
+
+For each horizon, the allocator maximises the model-estimated rupee gain with exact unbounded integer knapsack dynamic programming. Whole shares only, no borrowing/shorting, cash permitted. Costs are integer paise, with exact gcd scaling; the rolling value buffer and reused backtrack storage bound memory. A cash-only allocation wins when no affordable positive prediction exists, or projected gains do not cover the allowance. The optimizer has no concentration limits; that is explicitly shown when a plan concentrates more than 70% of its budget in one company.
+
+Allocation coverage is the bundled model universe (24 stocks initially), restricted to NSE equities priced at ₹1,000 or less and with daily turnover over ₹1 crore. Each stock's forecast must match the official market closing date; stale forecasts are refreshed or excluded. Missing horizons are excluded separately. **Optimality applies only to these forecast inputs and constraints, not the whole exchange or actual future returns.** Models that failed to beat the baseline are not excluded automatically; the plan warns when it includes them.
+
+Every horizon is a separate alternative using the same budget, not one-third of the budget or a sequence of trades. Plans show symbols, quantities, prices, share costs, unspent cash, allowance, projected value and gain. Upper/lower per-stock model ranges are summed as favourable/downside scenarios. These are not joint portfolio confidence intervals, calibrated probabilities, maximum possible gains, or maximum possible losses. Fees/taxes are excluded unless the user enters an allowance. Cash earns zero.
+
+```sh
+node scripts/test-allocation.mjs
+```
+
+This checks the solver against exhaustive enumeration, a case where greedy ROI fails, negative forecasts, unaffordable shares, paise precision, allowances, cash, input bounds, and budget conservation across real-data horizons. A ₹1 lakh benchmark is included.
