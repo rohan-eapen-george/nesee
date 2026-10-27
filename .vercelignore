@@ -1,0 +1,14 @@
+.git
+.next
+node_modules
+dist
+outputs
+work
+.wrangler
+.sites-runtime
+.openai
+.agents
+.codex
+.env*
+.dev.vars*
+*.pem

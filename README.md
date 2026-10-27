@@ -1,17 +1,17 @@
 # nesee
 
-A working Indian stock discovery website powered by a real ridge-regression forecasting model. Built with React, Vinext, Tailwind, and Cloudflare Workers. No brokerage integration or order execution.
+A working Indian stock discovery website powered by a real ridge-regression forecasting model. Built with Next.js, React and Tailwind, deployed to Vercel. The original Sites/Vinext preview tooling remains available. No brokerage integration or order execution.
 
 ## Run locally
 
-Requires Node 22.13+ (Node 25 recommended for the data/model scripts) and npm.
+Requires Node 22.13+ and npm; Vercel uses Node 24.
 
 ```sh
-npm install
-npm run dev
+npm ci
+npm run dev:vercel
 ```
 
-Open the printed local URL, normally http://127.0.0.1:5173.
+Open http://localhost:3000. The original Sites preview can still be run with `npm run dev`.
 
 ## Features
 
@@ -43,10 +43,11 @@ The snapshot is included so the website can work even when public feeds throttle
 ```sh
 npx tsc --noEmit
 node scripts/test-model.mjs
-npm run build
+node scripts/test-allocation.mjs
+npm run build:vercel
 ```
 
-Keep the Sites Vite integration in place. Hosting identity is in `.openai/hosting.json`. Site publishing uses the bundled Sites source workflow, which packages the Worker and client assets from the pushed source commit. The new site is owner-private by default.
+Production uses the existing Vercel project `nesee` in the `rohan8` team and serves [nesee.live](https://nesee.live). The private GitHub repository is [rohan-eapen-george/nesee](https://github.com/rohan-eapen-george/nesee). Pushes to `main` deploy to production automatically; other branches and pull requests get preview deployments. Test locally before pushing to `main`. No separate GitHub Actions deployment workflow or Vercel token is required.
 
 ## Limits
 
@@ -75,3 +76,38 @@ node scripts/test-allocation.mjs
 ```
 
 This checks the solver against exhaustive enumeration, a case where greedy ROI fails, negative forecasts, unaffordable shares, paise precision, allowances, cash, input bounds, and budget conservation across real-data horizons. A ₹1 lakh benchmark is included.
+
+## Deploy to Vercel with nesee.live
+
+The app is ready for native Next.js hosting on Vercel. `vercel.json` selects the Next.js framework, `npm ci`, and `npm run build:vercel`. Existing Sites/Vinext scripts remain available for the original preview; Vercel does not use the Cloudflare Worker entrypoint.
+
+```sh
+npm run build:vercel
+npm run start:vercel
+```
+
+All three API routes use the Node.js runtime, dynamic responses, and a 60-second maximum duration. The real historical data, ridge model and integer allocation solver run on the server. No API keys are needed for the current public-data sources.
+
+Once signed in to the intended Vercel account, deploy from this project directory using Vercel's CLI or the connected Vercel integration. Select the intended account/team and project. Configure `nesee.live` on that Vercel project, then copy the **project-specific DNS records Vercel returns** into Namecheap's Advanced DNS. Do not use the old ChatGPT hosting IPs or guess Vercel's DNS target. Confirm domain ownership, DNS validation, HTTPS certificate and a working allocation API before calling the custom domain live.
+
+`.vercelignore` excludes credentials, local environment files, prior build outputs, `.openai`, and generated artifacts from the upload. The old pending custom-domain attachment was removed from Sites when Vercel was selected; no Namecheap DNS records were changed.
+
+Historical series are stored losslessly compressed in `data/histories-packed.json` for deployment; the server decodes them with Node.js zlib. `scripts/precompute.mjs` regenerates this packed copy, and the packer verifies byte-for-byte equality. Raw histories remain available locally for refresh and model tests.
+
+## Company logos
+
+The local stock UI uses a shared `StockLogo` component in research cards, the stock table, individual forecasts, and whole-share allocations. Assets are served from `public/stock-logos/`, so browsing does not make third-party image requests. The first catalog pass provides 2,064 matched company logos, including all 24 modelled stocks; the other 292 stocks keep their initials. An image-load error also falls back to initials.
+
+Identity matching uses the official [NSE equity master](https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv) and the [ISIN-indexed Indian Listed Company Logos API](https://company-logo.shareperks.in/). A logo is accepted only with the official ISIN and an equivalent NSE/BSE ticker (punctuation differences normalised). Missing entries and mismatches are not substituted with guesses. `data/stock-logos-audit.json` records sources, retrieval dates, identity checks, hashes, and unavailable entries. Companies own their respective logos and trademarks.
+
+```sh
+python3 scripts/refresh-logos.py
+# Re-fetch existing logos to check for rebrands:
+python3 scripts/refresh-logos.py --refresh
+```
+
+The importer checks SVGs for active content, external references and unreasonable size, and adds a viewBox where needed for consistent scaling. The logo map is imported once by the shared client component; images are lazy-loaded except the three prominent research cards. These assets are committed with the application and deployed with it.
+
+### Typography
+
+The UI uses self-hosted Plus Jakarta Sans (variable weights 200–800), loaded through `next/font/local` with `display: swap`. Font files and their OFL license live in `app/fonts/`. `app/typography.css` defines a single responsive type scale: 12–13px supporting labels, 14–16px UI and body text, 24–30px headings, and larger financial values. Secondary text uses darker greens, numerical values use tabular figures, and chart axes use HTML labels so they stay readable as the plot resizes. Layout rules remain in `app/globals.css`.

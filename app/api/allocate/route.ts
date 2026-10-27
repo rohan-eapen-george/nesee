@@ -1,3 +1,6 @@
+export const runtime = 'nodejs';
+export const maxDuration = 60;
+export const dynamic = 'force-dynamic';
 import {market,getForecast,historyStore} from '../../../lib/market';
 import {allocateHorizons,validAmount,type AllocationCandidate} from '../../../lib/allocation';
 export async function POST(request:Request){

@@ -1,0 +1,287 @@
+/* nesee typography: Plus Jakarta Sans; roles follow a single readable scale. */
+:root {
+  --type-xs: .75rem;
+  --type-sm: .8125rem;
+  --type-ui: .875rem;
+  --type-copy: .9375rem;
+  --type-base: 1rem;
+  --type-lg: 1.125rem;
+  --type-xl: 1.25rem;
+  --type-heading: 1.5rem;
+  --type-title: 1.875rem;
+  --type-display: 2.25rem;
+  --text-primary: #20362b;
+  --text-secondary: #4b5e50;
+  --text-muted: #5b6d59;
+  --text-action: #2f6245;
+  --text-positive: #236342;
+  --text-negative: #9c453b;
+  --text-warning: #725622;
+}
+html { font-size: 16px; }
+body {
+  font-family: var(--font-nesee), system-ui, sans-serif;
+  font-size: var(--type-base);
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0;
+  color: var(--text-primary);
+}
+button, input, select, textarea { font: inherit; color: inherit; }
+h1, h2, h3 { font-weight: 600; line-height: 1.3; letter-spacing: -.025em; }
+strong { font-weight: 600; }
+small { font-size: var(--type-sm); }
+.positive { color: var(--text-positive); }
+.negative { color: var(--text-negative); }
+.muted { color: var(--text-muted); }
+
+/* Navigation and shell */
+.brand { font-size: 32px; font-weight: 700; line-height: 1; letter-spacing: -.06em; }
+.brand-icon { color: #fffef8; }
+.brand-dot { color: #56794b; }
+.nav-label, .eyebrow { font-size: var(--type-xs); font-weight: 600; line-height: 1.5; letter-spacing: .08em; color: var(--text-muted); }
+.nav { gap: 8px; padding-inline: 10px; font-size: var(--type-ui); font-weight: 500; line-height: 1.4; color: var(--text-secondary); }
+.nav.active { font-weight: 600; color: #2c583d; }
+.nav-count { font-size: var(--type-xs); font-weight: 600; line-height: 1.6; }
+.note-icon, .india-mark { color: var(--text-action); }
+.sidebar { overflow-y: auto; }
+.sidebar-note { margin-top: 32px; padding: 18px 14px; }
+.sidebar-note strong { font-size: var(--type-lg); line-height: 1.45; letter-spacing: -.02em; }
+.sidebar-note p { font-size: var(--type-sm); line-height: 1.7; color: var(--text-secondary); }
+.sidebar-note button { font-size: var(--type-sm); font-weight: 600; line-height: 1.5; color: var(--text-action); }
+.sidebar-bottom { font-size: var(--type-xs); line-height: 1.55; color: var(--text-secondary); }
+.sidebar-bottom small { font-size: var(--type-xs); line-height: 1.55; color: var(--text-muted); }
+.breadcrumb { font-size: var(--type-sm); line-height: 1.5; color: var(--text-muted); }
+.breadcrumb strong { font-weight: 500; color: var(--text-secondary); }
+.breadcrumb span { color: var(--text-muted); }
+.data-badge { font-size: var(--type-xs); font-weight: 500; line-height: 1.5; color: var(--text-muted); }
+.icon-button { color: var(--text-secondary); }
+.profile { font-size: var(--type-xs); font-weight: 600; color: var(--text-secondary); }
+
+/* Common controls and section hierarchy */
+.outline-button, .text-button { font-size: var(--type-ui); font-weight: 500; line-height: 1.5; color: var(--text-action); }
+.outline-button { min-height: 42px; }
+.primary-button { font-size: var(--type-ui); font-weight: 600; line-height: 1.5; color: #fffef8; }
+.primary-button:disabled { color: #fffef8; }
+.section-heading h2, .explore-top h2 { font-size: var(--type-heading); font-weight: 600; line-height: 1.35; letter-spacing: -.025em; }
+.section-heading p, .explore-top p { font-size: var(--type-ui); line-height: 1.65; color: var(--text-secondary); }
+.section-heading .text-button { font-size: var(--type-sm); }
+.ai-icon { color: var(--text-action); }
+.tag { font-size: var(--type-xs); font-weight: 500; line-height: 1.5; letter-spacing: 0; color: var(--text-secondary); }
+.subtle-label { font-size: var(--type-sm); line-height: 1.55; color: var(--text-muted); }
+.company-logo { font-size: var(--type-sm); font-weight: 600; line-height: 1; letter-spacing: 0; color: var(--text-secondary); }
+.small-logo, .company-logo.holding-logo { font-size: var(--type-xs); }
+
+/* Research cards */
+.pick-company strong { display: block; font-size: var(--type-base); font-weight: 600; line-height: 1.4; }
+.pick-company small { font-size: var(--type-sm); line-height: 1.5; color: var(--text-muted); }
+.pick-arrow { color: var(--text-action); }
+.pick-price { font-size: 28px; font-weight: 600; line-height: 1.25; letter-spacing: -.035em; font-variant-numeric: tabular-nums; }
+.pick-price > span { font-size: var(--type-sm); font-weight: 500; line-height: 1.5; letter-spacing: 0; }
+.pick-price small { font-size: var(--type-xs); color: var(--text-muted); }
+.pick-bottom { font-size: var(--type-xs); line-height: 1.6; color: var(--text-secondary); align-items: flex-start; }
+.pick-bottom > span { max-width: 26ch; }
+.pick-bottom strong { font-size: var(--type-ui); font-weight: 600; line-height: 1.5; }
+
+/* Stock browser */
+.filter { min-width: 130px; gap: 4px; padding: 9px 11px; }
+.filter > span { font-size: var(--type-xs); font-weight: 500; line-height: 1.45; color: var(--text-muted); }
+.filter select { width: 100%; min-width: 0; font-size: var(--type-ui); line-height: 1.5; color: var(--text-primary); }
+.search-field { color: var(--text-muted); }
+.search-field input { height: 53px; font-size: var(--type-ui); line-height: 1.5; color: var(--text-primary); }
+.search-field input::placeholder { color: var(--text-muted); opacity: 1; }
+th { font-size: var(--type-xs); font-weight: 600; line-height: 1.5; letter-spacing: .045em; color: var(--text-secondary); }
+td { font-size: var(--type-ui); line-height: 1.55; }
+.company-cell strong { font-size: var(--type-ui); font-weight: 600; line-height: 1.45; }
+.nse { font-size: var(--type-xs); font-weight: 500; line-height: 1.4; color: var(--text-muted); vertical-align: middle; }
+.company-name { font-size: var(--type-sm); line-height: 1.55; color: var(--text-muted); }
+.sector-name { font-size: var(--type-sm); line-height: 1.55; color: var(--text-secondary); }
+.numeric { font-size: var(--type-copy); font-weight: 500; line-height: 1.5; font-variant-numeric: tabular-nums; }
+.change { font-size: var(--type-sm); font-weight: 500; line-height: 1.5; }
+.forecast-button { font-size: var(--type-sm); font-weight: 500; line-height: 1.5; color: var(--text-action); }
+.save-button { color: var(--text-action); }
+.save-button[aria-pressed=true] { color: #2a5d3d; }
+.table-footer, .pagination > span { font-size: var(--type-sm); line-height: 1.5; color: var(--text-muted); }
+.pagination button { font-size: var(--type-xs); font-weight: 500; line-height: 1.5; color: var(--text-secondary); }
+.pagination { flex-shrink: 0; }
+
+/* Individual stock forecast */
+.forecast-title h2 { font-size: var(--type-heading); font-weight: 600; line-height: 1.3; }
+.forecast-title p { font-size: var(--type-ui); line-height: 1.55; color: var(--text-secondary); }
+.forecast-tabs button { font-size: var(--type-ui); font-weight: 500; line-height: 1.5; color: var(--text-secondary); }
+.forecast-tabs button.active { font-weight: 600; color: var(--text-action); }
+.forecast-tabs span { font-size: var(--type-xs); font-weight: 400; line-height: 1.5; color: var(--text-muted); }
+.metric-label { font-size: var(--type-xs); font-weight: 600; line-height: 1.5; letter-spacing: .07em; color: var(--text-muted); }
+.estimate { font-size: var(--type-display); font-weight: 600; line-height: 1.2; letter-spacing: -.04em; font-variant-numeric: tabular-nums; }
+.estimate > span { font-size: var(--type-ui); font-weight: 500; line-height: 1.5; letter-spacing: 0; }
+.forecast-metrics { flex-wrap: wrap; row-gap: 20px; }
+.forecast-metrics p, .forecast-metrics .interval p { font-size: var(--type-sm); line-height: 1.6; color: var(--text-muted); }
+.interval strong { font-size: var(--type-lg); font-weight: 500; line-height: 1.4; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.chart-legend { font-size: var(--type-xs); line-height: 1.5; color: var(--text-muted); flex-wrap: wrap; gap: 9px 18px; }
+.forecast-insights h3 { font-size: var(--type-xl); font-weight: 600; line-height: 1.35; letter-spacing: -.025em; }
+.forecast-insights > p { font-size: var(--type-ui); line-height: 1.7; color: var(--text-secondary); }
+.insight-row { font-size: var(--type-sm); line-height: 1.55; color: var(--text-secondary); flex-wrap: wrap; gap: 6px; }
+.insight-row strong { font-size: var(--type-ui); font-weight: 600; color: var(--text-primary); }
+.forecast-insights > button { font-size: var(--type-sm); font-weight: 500; line-height: 1.6; color: var(--text-action); text-align: left; }
+.forecast-footnote { font-size: var(--type-xs); line-height: 1.65; color: var(--text-muted); flex-wrap: wrap; }
+.forecast-footnote > span { flex-wrap: wrap; }
+.forecast-footnote a { color: var(--text-action); }
+.data-note { font-size: var(--type-xs); line-height: 1.7; color: var(--text-muted); }
+.forecast-loading p { font-size: var(--type-ui); line-height: 1.6; color: var(--text-secondary); }
+.price-plot { position: relative; margin-top: 18px; }
+.price-plot svg { display: block; width: calc(100% - 62px); height: 220px; }
+.chart-y-labels { position: absolute; inset: 0 0 0 auto; width: 54px; }
+.chart-y-labels span { position: absolute; left: 0; transform: translateY(-50%); font-size: var(--type-xs); line-height: 1.4; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+.chart-x-labels { position: relative; width: calc(100% - 62px); display: flex; justify-content: space-between; gap: 8px; margin-top: 8px; }
+.chart-x-labels span { font-size: var(--type-xs); line-height: 1.5; color: var(--text-muted); }
+.chart-x-labels span:nth-child(2) { position: absolute; left: 67.47%; transform: translateX(-50%); text-align: center; }
+.chart-x-labels span:last-child { margin-left: auto; text-align: right; color: var(--text-action); }
+
+/* Budget input */
+.planner-invitation h2, .planner-question h2, .allocation-heading h2 { font-size: clamp(24px, 2.3vw, 30px); font-weight: 600; line-height: 1.35; letter-spacing: -.035em; }
+.planner-invitation p, .planner-question p { font-size: var(--type-copy); line-height: 1.7; color: var(--text-secondary); }
+.planner-invitation .eyebrow { font-size: var(--type-xs); }
+.amount-field > span:first-child, .amount-field input { font-size: 32px; font-weight: 500; line-height: 1.25; letter-spacing: -.03em; color: var(--text-primary); }
+.amount-field input { height: 42px; }
+.amount-field input::placeholder { color: var(--text-muted); opacity: 1; }
+.amount-currency { font-size: var(--type-xs); font-weight: 500; line-height: 1.5; letter-spacing: .05em; color: var(--text-muted); }
+.amount-presets > span { font-size: var(--type-sm); line-height: 1.5; color: var(--text-secondary); }
+.amount-presets > button { font-size: var(--type-sm); font-weight: 500; line-height: 1.5; color: var(--text-action); }
+.amount-presets > button.active { font-weight: 600; color: #284f36; }
+.charges-settings { font-size: var(--type-sm); line-height: 1.6; color: var(--text-secondary); }
+.charges-settings label { font-size: var(--type-ui); font-weight: 500; line-height: 1.5; }
+.charges-settings input { font-size: var(--type-ui); line-height: 1.5; color: var(--text-primary); }
+.charges-settings p { font-size: var(--type-xs); line-height: 1.65; color: var(--text-muted); }
+.planner-error { font-size: var(--type-ui); line-height: 1.6; color: var(--text-negative); }
+.planner-promise { font-size: var(--type-xs); font-weight: 400; line-height: 1.6; color: var(--text-secondary); }
+.planner-promise > span { color: var(--text-muted); }
+
+/* Allocation results */
+.allocation-heading p, .allocation-context p { font-size: var(--type-ui); line-height: 1.7; color: var(--text-secondary); }
+.allocation-date { font-size: var(--type-sm); line-height: 1.7; color: var(--text-muted); }
+.allocation-date strong { font-size: var(--type-sm); font-weight: 600; color: var(--text-secondary); }
+.allocation-context { color: var(--text-secondary); }
+.allocation-limits { font-size: var(--type-sm); line-height: 1.65; color: var(--text-muted); }
+.allocation-progress > p { font-size: var(--type-ui); line-height: 1.6; color: var(--text-secondary); }
+.plan-horizon { font-size: var(--type-xl); font-weight: 600; line-height: 1.35; letter-spacing: -.025em; }
+.allocation-card > header p { font-size: var(--type-xs); line-height: 1.5; color: var(--text-muted); }
+.plan-mark { color: var(--text-action); }
+.plan-value > span { font-size: var(--type-xs); font-weight: 600; line-height: 1.5; letter-spacing: .06em; color: var(--text-muted); }
+.plan-value > strong { font-size: 32px; font-weight: 600; line-height: 1.25; letter-spacing: -.035em; }
+.plan-value > p { font-size: var(--type-ui); font-weight: 500; line-height: 1.6; }
+.plan-value > p > span { font-size: var(--type-sm); }
+.plan-scenarios span { font-size: var(--type-xs); line-height: 1.5; color: var(--text-muted); }
+.plan-scenarios strong { font-size: var(--type-base); font-weight: 500; line-height: 1.5; color: var(--text-primary); }
+.plan-holdings h3 { font-size: var(--type-ui); font-weight: 600; line-height: 1.5; color: var(--text-secondary); }
+.plan-holdings th, .plan-holdings th:nth-child(2) { font-size: var(--type-xs); font-weight: 600; line-height: 1.5; letter-spacing: .035em; }
+.plan-holdings td, .plan-holdings td:last-child { font-size: var(--type-ui); line-height: 1.55; }
+.plan-holdings th:first-child { width: 55%; }
+.plan-holdings th:nth-child(2) { width: 13%; }
+.plan-holdings th:last-child { width: 32%; }
+.plan-holdings td .stock-holding-label strong { flex-wrap: nowrap; overflow-wrap: normal; white-space: nowrap; }
+.plan-holdings td strong { font-size: var(--type-sm); font-weight: 600; line-height: 1.5; }
+.plan-holdings td small { font-size: var(--type-xs); line-height: 1.5; color: var(--text-muted); }
+.cash-reason { font-size: var(--type-ui); line-height: 1.7; color: var(--text-secondary); }
+.plan-totals > div { font-size: var(--type-sm); line-height: 1.65; color: var(--text-secondary); }
+.plan-totals dd { color: var(--text-primary); }
+.plan-totals .plan-budget-total { font-weight: 600; color: var(--text-primary); }
+.plan-evidence { font-size: var(--type-xs); line-height: 1.7; color: var(--text-warning); }
+.plan-concentration { font-size: var(--type-xs); line-height: 1.7; color: var(--text-secondary); }
+.allocation-card > footer { font-size: var(--type-xs); line-height: 1.65; color: var(--text-muted); }
+.allocation-method { font-size: var(--type-ui); line-height: 1.65; color: var(--text-action); }
+.allocation-method p { font-size: var(--type-ui); line-height: 1.75; color: var(--text-secondary); }
+.method-links a { font-size: var(--type-sm); font-weight: 500; line-height: 1.6; color: var(--text-action); }
+
+/* Empty states, learning material and footer */
+.empty { color: var(--text-secondary); }
+.empty h3 { font-size: var(--type-heading); font-weight: 600; line-height: 1.35; color: var(--text-primary); }
+.empty p { font-size: var(--type-ui); line-height: 1.75; color: var(--text-secondary); }
+.inline-error { font-size: var(--type-ui); line-height: 1.6; color: var(--text-negative); }
+.learn-symbol { color: var(--text-action); }
+.learn-strip h3 { font-size: var(--type-base); font-weight: 600; line-height: 1.5; letter-spacing: -.015em; }
+.learn-strip p { font-size: var(--type-ui); line-height: 1.7; color: var(--text-secondary); }
+.learn-strip .outline-button { font-size: var(--type-sm); font-weight: 500; color: var(--text-action); }
+.footer { font-size: var(--type-xs); line-height: 1.7; color: var(--text-muted); }
+.footer > p { line-height: 1.7; }
+.footer > div { font-size: var(--type-xs); line-height: 1.6; color: var(--text-muted); }
+.footer button { color: var(--text-action); }
+.modal h2 { font-size: var(--type-title); font-weight: 600; line-height: 1.3; letter-spacing: -.035em; }
+.modal h3 { font-size: var(--type-base); font-weight: 600; line-height: 1.5; }
+.modal p { font-size: var(--type-copy); line-height: 1.75; color: var(--text-secondary); }
+.saved { color: var(--text-action); }
+
+/* Layout accommodates the larger text instead of shrinking it on small screens. */
+@media(max-width:1200px) {
+  .plans-grid { grid-template-columns: 1fr; }
+  .brand { font-size: 29px; }
+  .forecast-body { grid-template-columns: minmax(0,1fr) 250px; }
+  .pick-price { font-size: 26px; }
+  .pick-bottom { flex-wrap: wrap; row-gap: 4px; }
+}
+@media(max-width:900px) {
+  .brand, .nav { font-size: 0; }
+  .forecast-body { grid-template-columns: 1fr; }
+  .company-logo { font-size: var(--type-xs); }
+  .pick-company strong { font-size: var(--type-ui); }
+  .pick-price { font-size: 26px; }
+  .pick-price > span { font-size: var(--type-xs); }
+  .section-heading { align-items: flex-start; }
+  .section-heading p { max-width: 65ch; }
+  .interval { text-align: left; }
+  .plan-value > strong { font-size: 34px; }
+  .plan-holdings td strong { font-size: var(--type-ui); }
+}
+@media(max-width:600px) {
+  .brand { font-size: 27px; }
+  .nav { font-size: 0; }
+  .topbar { min-height: 56px; }
+  .breadcrumb, .data-badge { font-size: var(--type-xs); }
+  .data-badge { max-width: 130px; }
+  .eyebrow { font-size: var(--type-xs); letter-spacing: .06em; }
+  .section-heading { flex-direction: column; gap: 12px; }
+  .section-heading h2, .explore-top h2 { font-size: 22px; }
+  .section-heading p { max-width: 65ch; }
+  .section-heading .text-button { font-size: var(--type-sm); }
+  .pick-company strong { font-size: var(--type-base); }
+  .pick-price { font-size: 30px; }
+  .pick-price > span { font-size: var(--type-ui); }
+  .pick-bottom { font-size: var(--type-xs); align-items: flex-start; }
+  .filter { min-width: calc(50% - 7px); }
+  .search-field { height: auto; }
+  .search-field input { height: 48px; font-size: var(--type-base); }
+  .filter select { font-size: var(--type-ui); }
+  .filter > span { font-size: var(--type-xs); }
+  .table-footer { flex-wrap: wrap; gap: 12px; }
+  .pagination { margin-left: auto; }
+  .forecast-actions .outline-button { font-size: var(--type-sm); }
+  .forecast-tabs { gap: 15px; }
+  .forecast-tabs button { font-size: var(--type-ui); }
+  .forecast-tabs span { font-size: var(--type-xs); }
+  .estimate { font-size: 34px; flex-wrap: wrap; gap: 8px; }
+  .interval strong { font-size: var(--type-base); white-space: normal; }
+  .insight-row { font-size: var(--type-sm); }
+  .price-plot svg { height: 190px; }
+  .chart-x-labels { flex-wrap: wrap; }
+  .chart-x-labels span:nth-child(2) { position: static; transform: none; margin-left: auto; text-align: right; }
+  .chart-x-labels span:last-child { flex-basis: 100%; }
+  .chart-legend { justify-content: flex-start; }
+  .planner-invitation h2 { max-width: none; }
+  .planner-invitation .primary-button, .planner-inputs .primary-button { font-size: var(--type-ui); }
+  .planner-promise { font-size: var(--type-xs); gap: 6px; }
+  .planner-promise > span { padding: 0 2px; }
+  .charges-settings { font-size: var(--type-sm); }
+  .allocation-heading p, .allocation-context p { font-size: var(--type-ui); }
+  .allocation-date, .allocation-date strong { font-size: var(--type-sm); }
+  .allocation-limits { font-size: var(--type-xs); }
+  .plan-value > strong { font-size: 32px; }
+  .plan-scenarios span { font-size: var(--type-xs); }
+  .plan-scenarios strong { font-size: var(--type-base); }
+  .plan-holdings th, .plan-holdings th:nth-child(2) { font-size: var(--type-xs); }
+  .plan-holdings td, .plan-holdings td:last-child { font-size: var(--type-ui); }
+  .plan-holdings td strong { font-size: var(--type-sm); }
+  .plan-holdings td small { font-size: var(--type-xs); }
+  .plan-evidence, .plan-concentration, .allocation-card > footer { font-size: var(--type-xs); }
+  .allocation-method, .allocation-method p { font-size: var(--type-ui); }
+  .modal h2 { font-size: 26px; }
+  .modal p { font-size: var(--type-copy); }
+}

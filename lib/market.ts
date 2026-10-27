@@ -1,5 +1,7 @@
 import snapshot from '../data/market.json';
-import stored from '../data/histories.json';
+import packedHistory from '../data/histories-packed.json';
+import {gunzipSync} from 'node:zlib';
+const stored=JSON.parse(gunzipSync(Buffer.from(packedHistory,'base64')).toString('utf8'));
 import precomputed from '../data/forecasts.json';
 import {analyze,type Bar} from './model';
 export type Stock=typeof snapshot.stocks[number];
