@@ -88,7 +88,7 @@ npm run start:vercel
 
 All three API routes use the Node.js runtime, dynamic responses, and a 60-second maximum duration. The real historical data, ridge model and integer allocation solver run on the server. No API keys are needed for the current public-data sources.
 
-Once signed in to the intended Vercel account, deploy from this project directory using Vercel's CLI or the connected Vercel integration. Select the intended account/team and project. Configure `nesee.live` on that Vercel project, then copy the **project-specific DNS records Vercel returns** into Namecheap's Advanced DNS. Do not use the old ChatGPT hosting IPs or guess Vercel's DNS target. Confirm domain ownership, DNS validation, HTTPS certificate and a working allocation API before calling the custom domain live.
+The existing Vercel project is connected to the private GitHub repository `rohan-eapen-george/nesee`. Push reviewed changes to `main` to update `nesee.live`; use a separate branch for preview deployments. Vercel builds the committed source with `npm run build:vercel`, including the local fonts, logos and model data. Check the resulting deployment reaches `READY` before considering a release complete. The domain is already configured; routine deployments do not require DNS changes.
 
 `.vercelignore` excludes credentials, local environment files, prior build outputs, `.openai`, and generated artifacts from the upload. The old pending custom-domain attachment was removed from Sites when Vercel was selected; no Namecheap DNS records were changed.
 
